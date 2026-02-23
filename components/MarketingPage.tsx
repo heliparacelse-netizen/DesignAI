@@ -1,20 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import LanguageSelector from "@/components/LanguageSelector";
-import { defaultLocale, getMessages, type SupportedLocale } from "@/lib/i18n";
+import { useI18n } from "@/components/I18nProvider";
 
-const links = ["product", "studio", "process"] as const;
-
-type MarketingPageProps = {
-  locale?: SupportedLocale;
-};
-
-export default function MarketingPage({ locale = defaultLocale }: MarketingPageProps) {
-  const messages = getMessages(locale);
+export default function MarketingPage() {
+  const { messages } = useI18n();
 
   const features = [
-    messages.features.aiLayout,
-    messages.features.styleBlending,
-    messages.features.exports,
+    {
+      title: "AI Layout Intelligence",
+      description:
+        "Generate refined room compositions with smart spacing, balance, and focal-point recommendations.",
+    },
+    {
+      title: "Style Blending Engine",
+      description:
+        "Blend modern, minimal, and luxury inspirations into coherent interiors tailored to your intent.",
+    },
+    {
+      title: "Client-ready Exports",
+      description:
+        "Share polished room concepts instantly with presentation-ready previews and clean visual output.",
+    },
   ];
 
   return (
@@ -29,36 +37,31 @@ export default function MarketingPage({ locale = defaultLocale }: MarketingPageP
           </div>
 
           <div className="hidden items-center gap-8 text-sm text-gray-300 md:flex">
-            {links.map((item) => (
-              <Link key={item} href="#" className="transition hover:text-white">
-                {messages.navbar[item]}
-              </Link>
-            ))}
+            <Link href="/produit" className="transition hover:text-white">{messages.nav.produit}</Link>
+            <Link href="/studio" className="transition hover:text-white">{messages.nav.studio}</Link>
+            <Link href="/processus" className="transition hover:text-white">{messages.nav.processus}</Link>
           </div>
 
           <div className="flex items-center gap-3">
             <LanguageSelector />
-            <button className="rounded-full border border-white/20 px-5 py-2 text-sm text-gray-200 transition hover:border-white/40 hover:text-white">
-              {messages.navbar.login}
-            </button>
+            <Link href="/login" className="rounded-full border border-white/20 px-5 py-2 text-sm text-gray-200 transition hover:border-white/40 hover:text-white">
+              {messages.nav.connexion}
+            </Link>
           </div>
         </div>
       </nav>
 
       <main className="mx-auto w-full max-w-6xl px-8">
         <section className="min-h-[80vh] pt-20">
-          <h1 className="text-5xl font-semibold leading-tight md:text-6xl">
-            {messages.hero.titleLine1}
-            <br className="hidden md:block" /> {messages.hero.titleLine2}
-          </h1>
+          <h1 className="text-5xl font-semibold leading-tight md:text-6xl">{messages.hero.title}</h1>
           <p className="mt-6 max-w-2xl text-lg text-gray-400">{messages.hero.subtitle}</p>
           <div className="mt-8 flex gap-4 justify-center md:justify-start">
-            <button className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-midnight">
-              {messages.hero.primaryCta}
-            </button>
-            <button className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white">
-              {messages.hero.secondaryCta}
-            </button>
+            <Link href="/studio" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-midnight">
+              {messages.hero.create}
+            </Link>
+            <Link href="/produit" className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white">
+              {messages.hero.demo}
+            </Link>
           </div>
         </section>
 
@@ -78,11 +81,11 @@ export default function MarketingPage({ locale = defaultLocale }: MarketingPageP
         </section>
 
         <section className="mt-24 pb-24 text-center">
-          <h2 className="text-3xl font-semibold md:text-4xl">{messages.cta.headline}</h2>
-          <p className="mt-4 text-gray-400">{messages.cta.subtitle}</p>
-          <button className="mt-8 rounded-full bg-electric px-8 py-4 text-sm font-semibold text-white shadow-glow">
-            {messages.cta.button}
-          </button>
+          <h2 className="text-3xl font-semibold md:text-4xl">{messages.cta}</h2>
+          <p className="mt-4 text-gray-400">Bring ideas to life with precision and speed.</p>
+          <Link href="/register" className="mt-8 inline-flex rounded-full bg-electric px-8 py-4 text-sm font-semibold text-white shadow-glow">
+            {messages.cta}
+          </Link>
         </section>
       </main>
     </div>

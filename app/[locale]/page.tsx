@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import MarketingPage from "@/components/MarketingPage";
-import { isSupportedLocale, supportedLocales, type SupportedLocale } from "@/lib/i18n";
+import { isSupportedLocale, supportedLocales } from "@/lib/i18n";
 
 export const dynamicParams = false;
 
@@ -17,5 +17,5 @@ export default function LocalePage({
     notFound();
   }
 
-  return <MarketingPage locale={params.locale as SupportedLocale} />;
+  return <MarketingPage />;
 }

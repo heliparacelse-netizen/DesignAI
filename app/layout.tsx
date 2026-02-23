@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { I18nProvider } from "@/components/I18nProvider";
 
 export const metadata: Metadata = {
   title: "DesignAI | Interior Intelligence",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="font-sans">{children}</body>
+    <html lang="fr" className="scroll-smooth">
+      <body className="font-sans">
+        <I18nProvider>{children}</I18nProvider>
+      </body>
     </html>
   );
 }
