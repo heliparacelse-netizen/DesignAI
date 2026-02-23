@@ -23,6 +23,7 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [locale, setLocaleState] = useState<SupportedLocale>(defaultLocale);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const pathSegment = pathname.split("/")[1];
@@ -35,6 +36,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(nextLocale);
     window.localStorage.setItem(storageKey, nextLocale);
     document.documentElement.lang = nextLocale;
+
+    const t = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(t);
   }, [pathname]);
 
   const setLocale = (nextLocale: SupportedLocale) => {
@@ -48,7 +52,19 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     [locale]
   );
 
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+  return (
+    <I18nContext.Provider value={value}>
+      {loading ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-midnight/95">
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 backdrop-blur">
+            <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            <p className="text-sm text-white/80">DesignAI is loading…</p>
+          </div>
+        </div>
+      ) : null}
+      {children}
+    </I18nContext.Provider>
+  );
 }
 
 export function useI18n() {
