@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Product",
+    "studio": "Studio",
+    "process": "Process",
+    "login": "Login",
+    "language": "Language"
+  },
+  "hero": {
+    "titleLine1": "AI-powered interiors,",
+    "titleLine2": "premium by design.",
+    "subtitle": "DesignAI helps teams transform any room into a cinematic concept with fast AI guidance, immersive visualization, and elegant output.",
+    "primaryCta": "Start Designing",
+    "secondaryCta": "Watch Demo"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "AI Layout Intelligence",
+      "description": "Generate refined room compositions with smart spacing, balance, and focal-point recommendations."
+    },
+    "styleBlending": {
+      "title": "Style Blending Engine",
+      "description": "Blend modern, minimal, and luxury inspirations into coherent interiors tailored to your intent."
+    },
+    "exports": {
+      "title": "Client-ready Exports",
+      "description": "Share polished room concepts instantly with presentation-ready previews and clean visual output."
+    }
+  },
+  "cta": {
+    "headline": "Start building your next room concept",
+    "subtitle": "Bring ideas to life with precision and speed.",
+    "button": "Start your first room"
+  }
+}
