@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-midnight text-white antialiased;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+  cursor: default;
+}
+
+button,
+a,
+input,
+select,
+summary {
+  transition: all 200ms ease-in-out;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-white via-aurora to-electric bg-clip-text text-transparent;
+}
+
+.card {
+  @apply rounded-3xl border border-white/10 bg-white/5 backdrop-blur;
+}
+
+.glow-ring {
+  box-shadow: 0 0 40px rgba(124, 92, 255, 0.35);
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+  details.mobile-collapse > summary {
+    @apply cursor-pointer rounded-xl border border-white/10 bg-white/5 px-4 py-3;
+  }
+
+  details.mobile-collapse[open] > summary {
+    @apply border-white/20;
+  }
+}

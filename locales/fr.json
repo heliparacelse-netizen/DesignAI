@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Produit",
+    "studio": "Studio",
+    "process": "Processus",
+    "login": "Connexion",
+    "language": "Langue"
+  },
+  "hero": {
+    "titleLine1": "Des intérieurs propulsés par l’IA,",
+    "titleLine2": "pensés pour l’excellence.",
+    "subtitle": "DesignAI aide les équipes à transformer chaque pièce en concept cinématographique grâce à une IA rapide, une visualisation immersive et un rendu élégant.",
+    "primaryCta": "Commencer à créer",
+    "secondaryCta": "Voir la démo"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "Intelligence d’agencement IA",
+      "description": "Générez des compositions de pièce raffinées avec des recommandations de circulation, d’équilibre et de points focaux."
+    },
+    "styleBlending": {
+      "title": "Moteur de fusion de styles",
+      "description": "Mélangez inspirations modernes, minimalistes et luxueuses en intérieurs cohérents selon votre vision."
+    },
+    "exports": {
+      "title": "Exports prêts pour vos clients",
+      "description": "Partagez instantanément des concepts soignés avec des aperçus de présentation propres et professionnels."
+    }
+  },
+  "cta": {
+    "headline": "Créez votre prochain concept de pièce",
+    "subtitle": "Donnez vie à vos idées avec précision et rapidité.",
+    "button": "Créer votre première pièce"
+  }
+}
