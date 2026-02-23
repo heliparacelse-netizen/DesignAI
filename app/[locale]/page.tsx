@@ -1,21 +1,21 @@
-import { notFound } from "next/navigation";
-import MarketingPage from "@/components/MarketingPage";
-import { isSupportedLocale, supportedLocales } from "@/lib/i18n";
+import { redirect } from "next/navigation";
+import LandingPage from "@/components/LandingPage";
+import { locales, type Locale } from "@/data/content";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return supportedLocales.map((locale) => ({ locale }));
+  return locales.map((locale) => ({ locale }));
 }
 
 export default function LocalePage({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: Locale };
 }) {
-  if (!isSupportedLocale(params.locale)) {
-    notFound();
+  if (!locales.includes(params.locale)) {
+    redirect("/en");
   }
 
-  return <MarketingPage />;
+  return <LandingPage locale={params.locale} />;
 }
