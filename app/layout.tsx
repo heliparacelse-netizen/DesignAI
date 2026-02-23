@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { I18nProvider } from "@/components/I18nProvider";
-import AuthProvider from "@/components/AuthProvider";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DesignAI | Interior Intelligence",
@@ -14,12 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="scroll-smooth">
-      <body className="font-sans">
-        <AuthProvider>
-          <I18nProvider>{children}</I18nProvider>
-        </AuthProvider>
-      </body>
+    <html lang="en" className="scroll-smooth">
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

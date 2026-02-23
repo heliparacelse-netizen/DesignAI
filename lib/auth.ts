@@ -6,6 +6,17 @@ import AppleProvider from "next-auth/providers/apple";
 const googleEnabled = process.env.NEXT_PUBLIC_GOOGLE_ENABLED === "true";
 const appleEnabled = process.env.NEXT_PUBLIC_APPLE_ENABLED === "true";
 
+const nextAuthSecret = process.env.NEXTAUTH_SECRET || "dev-insecure-nextauth-secret";
+const nextAuthUrl = process.env.NEXTAUTH_URL;
+
+if (!process.env.NEXTAUTH_SECRET) {
+  console.warn("[auth] NEXTAUTH_SECRET is missing, using an insecure development fallback.");
+}
+
+if (!nextAuthUrl) {
+  console.warn("[auth] NEXTAUTH_URL is not set; set it in your environment for production deployments.");
+}
+
 const providers: NextAuthOptions["providers"] = [
   CredentialsProvider({
     name: "Credentials",
@@ -78,5 +89,5 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
-  secret: process.env.NEXTAUTH_SECRET || "xK9#mP2$vL5nQ8wR3jY6uA1sD4hF7tG0",
+  secret: nextAuthSecret,
 };
