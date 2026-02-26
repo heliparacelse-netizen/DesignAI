@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import I18nProvider from "@/components/I18nProvider";
 
 export const metadata: Metadata = {
   title: "DesignAI | Interior Intelligence",
@@ -14,9 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="font-sans">
-        <I18nProvider>{children}</I18nProvider>
-      </body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
