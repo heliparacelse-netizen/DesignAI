@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Produto",
+    "studio": "Estúdio",
+    "process": "Processo",
+    "login": "Entrar",
+    "language": "Idioma"
+  },
+  "hero": {
+    "titleLine1": "Transforme qualquer",
+    "titleLine2": "quarto com IA",
+    "subtitle": "Envie uma foto. Nossa IA redesenha seu espaço instantaneamente.",
+    "primaryCta": "Começar grátis",
+    "secondaryCta": "Ver demo"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "Inteligência de layout IA",
+      "description": "Composições de quartos refinadas com recomendações inteligentes."
+    },
+    "styleBlending": {
+      "title": "Motor de mistura de estilos",
+      "description": "Combine estilos modernos, minimalistas e de luxo adaptados ao seu espaço."
+    },
+    "exports": {
+      "title": "Exportações prontas para clientes",
+      "description": "Compartilhe conceitos de quartos instantaneamente com saída visual de alta qualidade."
+    }
+  },
+  "cta": {
+    "headline": "Pronto para redesenhar seu espaço?",
+    "subtitle": "Junte-se a milhares de designers que usam IA para trabalhar mais rápido.",
+    "button": "Começar grátis"
+  }
+}

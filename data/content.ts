@@ -1,32 +1,30 @@
 export const locales = [
-  "en",
   "fr",
+  "en",
   "es",
   "de",
   "it",
   "pt",
   "nl",
-  "sv",
-  "da",
-  "no",
   "ja",
+  "zh",
+  "ko",
   "ar",
 ] as const;
 
 export type Locale = (typeof locales)[number];
 
 export const languageLabels: Record<Locale, string> = {
-  en: "EN",
   fr: "FR",
+  en: "EN",
   es: "ES",
   de: "DE",
   it: "IT",
   pt: "PT",
   nl: "NL",
-  sv: "SV",
-  da: "DA",
-  no: "NO",
   ja: "JA",
+  zh: "ZH",
+  ko: "KO",
   ar: "AR",
 };
 

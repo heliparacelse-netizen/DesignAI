@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "製品",
+    "studio": "スタジオ",
+    "process": "プロセス",
+    "login": "ログイン",
+    "language": "言語"
+  },
+  "hero": {
+    "titleLine1": "AIでどんな部屋も",
+    "titleLine2": "変身させよう",
+    "subtitle": "写真をアップロードするだけ。AIが瞬時にあなたの空間をリデザインします。",
+    "primaryCta": "無料で始める",
+    "secondaryCta": "デモを見る"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "AIレイアウトインテリジェンス",
+      "description": "スマートな推奨による洗練された部屋のレイアウト。"
+    },
+    "styleBlending": {
+      "title": "スタイルブレンディングエンジン",
+      "description": "モダン、ミニマル、ラグジュアリーなスタイルをあなたの空間に合わせて組み合わせます。"
+    },
+    "exports": {
+      "title": "クライアント向けエクスポート",
+      "description": "高品質なビジュアル出力で部屋のコンセプトを即座に共有。"
+    }
+  },
+  "cta": {
+    "headline": "あなたの空間をリデザインする準備はできていますか？",
+    "subtitle": "AIを使ってより速く作業する何千ものデザイナーに参加しましょう。",
+    "button": "無料で始める"
+  }
+}

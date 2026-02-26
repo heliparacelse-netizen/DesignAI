@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Produkt",
+    "studio": "Studio",
+    "process": "Prozess",
+    "login": "Anmelden",
+    "language": "Sprache"
+  },
+  "hero": {
+    "titleLine1": "Verwandle jeden",
+    "titleLine2": "Raum mit KI",
+    "subtitle": "Lade ein Foto hoch. Unsere KI gestaltet deinen Raum sofort neu.",
+    "primaryCta": "Kostenlos starten",
+    "secondaryCta": "Demo ansehen"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "KI-Layout-Intelligenz",
+      "description": "Verfeinerte Raumkompositionen mit intelligenten Empfehlungen."
+    },
+    "styleBlending": {
+      "title": "Stil-Mix-Engine",
+      "description": "Kombiniere moderne, minimalistische und luxuriöse Stile für deinen Raum."
+    },
+    "exports": {
+      "title": "Kundenfertige Exporte",
+      "description": "Teile Raumkonzepte sofort mit hochwertiger visueller Ausgabe."
+    }
+  },
+  "cta": {
+    "headline": "Bereit, deinen Raum neu zu gestalten?",
+    "subtitle": "Schließe dich tausenden Designern an, die KI nutzen, um schneller zu arbeiten.",
+    "button": "Kostenlos starten"
+  }
+}

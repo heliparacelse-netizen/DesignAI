@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "제품",
+    "studio": "스튜디오",
+    "process": "프로세스",
+    "login": "로그인",
+    "language": "언어"
+  },
+  "hero": {
+    "titleLine1": "AI로 어떤 방이든",
+    "titleLine2": "변화시키세요",
+    "subtitle": "사진을 업로드하세요. AI가 즉시 공간을 재디자인합니다.",
+    "primaryCta": "무료로 시작",
+    "secondaryCta": "데모 보기"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "AI 레이아웃 인텔리전스",
+      "description": "스마트 추천으로 세련된 방 구성을 제공합니다."
+    },
+    "styleBlending": {
+      "title": "스타일 블렌딩 엔진",
+      "description": "현대적, 미니멀, 럭셔리 스타일을 공간에 맞게 조합합니다."
+    },
+    "exports": {
+      "title": "클라이언트 준비 익스포트",
+      "description": "고품질 시각 출력으로 방 개념을 즉시 공유하세요."
+    }
+  },
+  "cta": {
+    "headline": "공간을 재디자인할 준비가 되셨나요?",
+    "subtitle": "AI를 사용해 더 빠르게 작업하는 수천 명의 디자이너와 함께하세요.",
+    "button": "무료로 시작"
+  }
+}
