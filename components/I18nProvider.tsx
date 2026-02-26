@@ -36,6 +36,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(nextLocale);
     window.localStorage.setItem(storageKey, nextLocale);
     document.documentElement.lang = nextLocale;
+    document.documentElement.dir = nextLocale === "ar" ? "rtl" : "ltr";
 
     const t = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(t);
@@ -45,6 +46,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(nextLocale);
     window.localStorage.setItem(storageKey, nextLocale);
     document.documentElement.lang = nextLocale;
+    document.documentElement.dir = nextLocale === "ar" ? "rtl" : "ltr";
   };
 
   const value = useMemo(

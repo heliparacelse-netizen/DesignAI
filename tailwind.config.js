@@ -6,6 +6,9 @@ module.exports = {
     "./data/**/*.{ts,tsx}"
   ],
   theme: {
+    fontFamily: {
+      sans: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
+    },
     extend: {
       colors: {
         midnight: "#0B0F19",

@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Product",
+    "studio": "Studio",
+    "process": "Proces",
+    "login": "Inloggen",
+    "language": "Taal"
+  },
+  "hero": {
+    "titleLine1": "Transformeer elke",
+    "titleLine2": "kamer met AI",
+    "subtitle": "Upload een foto. Onze AI herontwerpt je ruimte direct.",
+    "primaryCta": "Gratis starten",
+    "secondaryCta": "Demo bekijken"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "AI-layout-intelligentie",
+      "description": "Verfijnde kamercomposities met slimme aanbevelingen."
+    },
+    "styleBlending": {
+      "title": "Stijlmengmotor",
+      "description": "Combineer moderne, minimale en luxe stijlen aangepast aan jouw ruimte."
+    },
+    "exports": {
+      "title": "Klantklare exports",
+      "description": "Deel kamerconcepten direct met visuele uitvoer van hoge kwaliteit."
+    }
+  },
+  "cta": {
+    "headline": "Klaar om je ruimte te herontwerpen?",
+    "subtitle": "Sluit je aan bij duizenden designers die AI gebruiken om sneller te werken.",
+    "button": "Gratis starten"
+  }
+}

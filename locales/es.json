@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Producto",
+    "studio": "Estudio",
+    "process": "Proceso",
+    "login": "Iniciar sesión",
+    "language": "Idioma"
+  },
+  "hero": {
+    "titleLine1": "Transforma cualquier",
+    "titleLine2": "habitación con IA",
+    "subtitle": "Sube una foto. Nuestra IA rediseña tu espacio al instante.",
+    "primaryCta": "Empezar gratis",
+    "secondaryCta": "Ver demo"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "Inteligencia de diseño IA",
+      "description": "Composiciones de habitaciones refinadas con recomendaciones inteligentes."
+    },
+    "styleBlending": {
+      "title": "Motor de mezcla de estilos",
+      "description": "Combina estilos modernos, minimalistas y de lujo adaptados a tu espacio."
+    },
+    "exports": {
+      "title": "Exportaciones listas para clientes",
+      "description": "Comparte conceptos de habitaciones al instante con salida visual de alta calidad."
+    }
+  },
+  "cta": {
+    "headline": "¿Listo para rediseñar tu espacio?",
+    "subtitle": "Únete a miles de diseñadores que usan IA para trabajar más rápido.",
+    "button": "Empezar gratis"
+  }
+}
