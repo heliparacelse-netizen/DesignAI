@@ -1,5 +1,5 @@
-import MarketingPage from "@/components/MarketingPage";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return <MarketingPage />;
+export default function IndexPage() {
+  redirect("/en");
 }

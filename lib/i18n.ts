@@ -1,15 +1,12 @@
 export const supportedLocales = [
   "fr",
   "en",
-  "es",
   "de",
-  "it",
   "pt",
-  "nl",
-  "ja",
   "zh-CN",
-  "ko",
   "ar-SA",
+  "sv",
+  "ja",
 ] as const;
 
 export type SupportedLocale = (typeof supportedLocales)[number];
@@ -20,27 +17,25 @@ export const defaultLocale: SupportedLocale = "fr";
 export const localeLabel: Record<SupportedLocale, string> = {
   fr: "Français",
   en: "English",
-  es: "Español",
   de: "Deutsch",
-  it: "Italiano",
   pt: "Português",
-  nl: "Nederlands",
-  ja: "日本語",
   "zh-CN": "简体中文",
-  ko: "한국어",
-  "ar-SA": "العربية",
+  "ar-SA": "العربية (السعودية)",
+  sv: "Svenska",
+  ja: "日本語",
 };
 
 export type MessageCatalog = {
-  nav: { product: string; studio: string; pricing: string; login: string; startFree: string };
-  hero: { title: string; subtitle: string; create: string; demo: string; trust: string };
+  nav: { produit: string; studio: string; processus: string; connexion: string };
+  hero: { title: string; subtitle: string; create: string; demo: string; badge: string };
   cta: string;
   pages: {
+    studio: string;
+    processus: string;
+    produit: string;
+    login: string;
+    register: string;
     dashboard: string;
-    projects: string;
-    history: string;
-    viewer: string;
-    settings: string;
     newProject: string;
     logout: string;
     usage: string;
@@ -53,26 +48,27 @@ export type MessageCatalog = {
 };
 
 const fr: MessageCatalog = {
-  nav: { product: "Produit", studio: "Studio", pricing: "Tarifs", login: "Connexion", startFree: "Commencer" },
+  nav: { produit: "Produit", studio: "Studio", processus: "Processus", connexion: "Connexion" },
   hero: {
-    title: "Transformez n’importe quelle pièce avec l’IA en quelques secondes",
-    subtitle: "Téléchargez une photo. Notre IA la redesign dans votre style, instantanément.",
+    title: "Le design intérieur IA qui impressionne vos clients.",
+    subtitle: "DesignAI transforme n’importe quelle pièce en concept premium grâce à une génération rapide, 3D et collaborative.",
     create: "Commencer à créer",
     demo: "Voir la démo",
-    trust: "✦ Déjà adopté par 2 400+ designers & architectes",
+    badge: "AI powered",
   },
   cta: "Créer votre première pièce",
   pages: {
+    studio: "Studio",
+    processus: "Processus",
+    produit: "Produit",
+    login: "Connexion",
+    register: "Inscription",
     dashboard: "Tableau de bord",
-    projects: "Projets",
-    history: "Historique",
-    viewer: "Visionneuse 3D",
-    settings: "Paramètres",
     newProject: "Nouveau projet",
     logout: "Déconnexion",
     usage: "générations utilisées",
     greeting: "Bonjour, Camille 👋",
-    upgrade: "Passer en Premium",
+    upgrade: "Passer au plan supérieur",
     projectsCreated: "Projets créés",
     generationsLeft: "Générations restantes",
     storageUsed: "Stockage utilisé",
@@ -80,26 +76,27 @@ const fr: MessageCatalog = {
 };
 
 const en: MessageCatalog = {
-  nav: { product: "Product", studio: "Studio", pricing: "Pricing", login: "Login", startFree: "Start Free" },
+  nav: { produit: "Product", studio: "Studio", processus: "Process", connexion: "Login" },
   hero: {
-    title: "Transform any room with AI in seconds",
-    subtitle: "Upload a photo. Our AI redesigns it in your style. Instantly.",
+    title: "AI interior design that wins clients faster.",
+    subtitle: "DesignAI turns any room into a premium concept with fast generation, live 3D and collaborative workflows.",
     create: "Start Creating",
     demo: "Watch Demo",
-    trust: "✦ Trusted by 2,400+ designers & architects",
+    badge: "AI powered",
   },
   cta: "Create your first room",
   pages: {
+    studio: "Studio",
+    processus: "Process",
+    produit: "Product",
+    login: "Login",
+    register: "Register",
     dashboard: "Dashboard",
-    projects: "Projects",
-    history: "History",
-    viewer: "3D Viewer",
-    settings: "Settings",
     newProject: "New Project",
     logout: "Logout",
     usage: "generations used",
     greeting: "Hello, Camille 👋",
-    upgrade: "Upgrade Plan",
+    upgrade: "Upgrade plan",
     projectsCreated: "Projects created",
     generationsLeft: "Generations left",
     storageUsed: "Storage used",
@@ -109,15 +106,12 @@ const en: MessageCatalog = {
 const catalogs: Record<SupportedLocale, MessageCatalog> = {
   fr,
   en,
-  es: en,
   de: en,
-  it: en,
   pt: en,
-  nl: en,
-  ja: en,
   "zh-CN": en,
-  ko: en,
   "ar-SA": en,
+  sv: en,
+  ja: en,
 };
 
 export function getMessages(locale: SupportedLocale): MessageCatalog {
@@ -130,15 +124,12 @@ export function detectBrowserLocale(browserLocale?: string): SupportedLocale {
 
   if (normalized.startsWith("fr")) return "fr";
   if (normalized.startsWith("en")) return "en";
-  if (normalized.startsWith("es")) return "es";
   if (normalized.startsWith("de")) return "de";
-  if (normalized.startsWith("it")) return "it";
   if (normalized.startsWith("pt")) return "pt";
-  if (normalized.startsWith("nl")) return "nl";
-  if (normalized.startsWith("ja")) return "ja";
   if (normalized.startsWith("zh")) return "zh-CN";
-  if (normalized.startsWith("ko")) return "ko";
   if (normalized.startsWith("ar")) return "ar-SA";
+  if (normalized.startsWith("sv")) return "sv";
+  if (normalized.startsWith("ja")) return "ja";
 
   return defaultLocale;
 }

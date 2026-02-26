@@ -22,8 +22,6 @@ export default function ThreeViewer({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
 
-  const isPremium = false;
-
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -31,16 +29,19 @@ export default function ThreeViewer({
     scene.background = new THREE.Color("#0b0f19");
 
     const camera = new THREE.PerspectiveCamera(
-      45,
+      50,
       containerRef.current.clientWidth / containerRef.current.clientHeight,
       0.1,
       1000
     );
-    camera.position.set(5.5, 4.2, 6.5);
+    camera.position.set(4, 3, 6);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(
+      containerRef.current.clientWidth,
+      containerRef.current.clientHeight
+    );
+    renderer.setPixelRatio(window.devicePixelRatio);
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -49,76 +50,62 @@ export default function ThreeViewer({
     controls.dampingFactor = 0.08;
     controls.autoRotate = autoRotate;
 
-    scene.add(new THREE.AmbientLight("#bcdcff", 0.5));
-    const dir = new THREE.DirectionalLight("#ffffff", 0.85);
-    dir.position.set(8, 10, 6);
-    scene.add(dir);
+    const ambientLight = new THREE.AmbientLight("#bcdcff", 0.6);
+    scene.add(ambientLight);
 
-    // floor + walls
-    const floor = new THREE.Mesh(
-      new THREE.PlaneGeometry(10, 10),
-      new THREE.MeshStandardMaterial({ color: "#151c2f", roughness: 0.75, metalness: 0.1 })
-    );
+    const directionalLight = new THREE.DirectionalLight("#ffffff", 0.8);
+    directionalLight.position.set(5, 8, 4);
+    scene.add(directionalLight);
+
+    const floorGeometry = new THREE.CircleGeometry(6, 32);
+    const floorMaterial = new THREE.MeshStandardMaterial({
+      color: "#111827",
+      roughness: 0.8,
+      metalness: 0.2,
+    });
+    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
     floor.rotation.x = -Math.PI / 2;
     scene.add(floor);
 
-    const backWall = new THREE.Mesh(
-      new THREE.PlaneGeometry(10, 4.5),
-      new THREE.MeshStandardMaterial({ color: "#111827" })
-    );
-    backWall.position.set(0, 2.2, -5);
-    scene.add(backWall);
+    const ringGeometry = new THREE.TorusGeometry(2.2, 0.3, 16, 100);
+    const ringMaterial = new THREE.MeshStandardMaterial({
+      color: "#7c5cff",
+      emissive: "#5b4bff",
+      emissiveIntensity: 0.3,
+      roughness: 0.3,
+      metalness: 0.7,
+    });
+    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+    ring.position.y = 1.2;
+    scene.add(ring);
 
-    const sideWall = new THREE.Mesh(
-      new THREE.PlaneGeometry(10, 4.5),
-      new THREE.MeshStandardMaterial({ color: "#0f172a" })
-    );
-    sideWall.rotation.y = Math.PI / 2;
-    sideWall.position.set(-5, 2.2, 0);
-    scene.add(sideWall);
+    const cubeGeometry = new THREE.BoxGeometry(1.8, 1.2, 1.8);
+    const cubeMaterial = new THREE.MeshStandardMaterial({
+      color: "#2dd4bf",
+      roughness: 0.2,
+      metalness: 0.6,
+    });
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    cube.position.set(0, 0.8, 0);
+    scene.add(cube);
 
-    // simple furniture
-    const sofa = new THREE.Mesh(
-      new THREE.BoxGeometry(3, 1, 1.2),
-      new THREE.MeshStandardMaterial({ color: "#7c5cff", roughness: 0.45 })
-    );
-    sofa.position.set(0.2, 0.6, -2);
-    scene.add(sofa);
+    const pointsGeometry = new THREE.SphereGeometry(0.12, 16, 16);
+    const pointsMaterial = new THREE.MeshStandardMaterial({
+      color: "#ffffff",
+      emissive: "#7c5cff",
+      emissiveIntensity: 0.6,
+    });
 
-    const table = new THREE.Mesh(
-      new THREE.BoxGeometry(1.8, 0.25, 1),
-      new THREE.MeshStandardMaterial({ color: "#2dd4bf", roughness: 0.4 })
-    );
-    table.position.set(0.8, 0.45, -0.5);
-    scene.add(table);
-
-    const cabinet = new THREE.Mesh(
-      new THREE.BoxGeometry(1.4, 1.8, 0.55),
-      new THREE.MeshStandardMaterial({ color: "#374151" })
-    );
-    cabinet.position.set(-2.8, 0.9, -3.2);
-    scene.add(cabinet);
-
-    const lamp = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.06, 0.06, 2.2, 16),
-      new THREE.MeshStandardMaterial({ color: "#d1d5db" })
-    );
-    lamp.position.set(2.7, 1.1, -1.4);
-    scene.add(lamp);
-
-    const lampHead = new THREE.Mesh(
-      new THREE.SphereGeometry(0.3, 20, 20),
-      new THREE.MeshStandardMaterial({ color: "#fef08a", emissive: "#eab308", emissiveIntensity: 0.3 })
-    );
-    lampHead.position.set(2.7, 2.35, -1.4);
-    scene.add(lampHead);
-
-    const floatingAccent = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.35, 0),
-      new THREE.MeshStandardMaterial({ color: "#7c5cff", emissive: "#5b4bff", emissiveIntensity: 0.35 })
-    );
-    floatingAccent.position.set(1.6, 2.2, 1.4);
-    scene.add(floatingAccent);
+    const points = Array.from({ length: 8 }).map((_, index) => {
+      const mesh = new THREE.Mesh(pointsGeometry, pointsMaterial);
+      mesh.position.set(
+        Math.sin(index) * 3,
+        1 + Math.cos(index) * 0.4,
+        Math.cos(index) * 3
+      );
+      scene.add(mesh);
+      return mesh;
+    });
 
     const resizeObserver = new ResizeObserver(() => {
       if (!containerRef.current) return;
@@ -131,10 +118,14 @@ export default function ThreeViewer({
     resizeObserver.observe(containerRef.current);
 
     let animationFrameId: number;
+
     const animate = () => {
       controls.autoRotate = autoRotate;
-      floatingAccent.rotation.y += 0.01;
-      floatingAccent.position.y = 2.2 + Math.sin(Date.now() * 0.002) * 0.08;
+      ring.rotation.y += 0.004;
+      cube.rotation.y += 0.002;
+      points.forEach((point, index) => {
+        point.position.y = 1 + Math.sin(Date.now() * 0.001 + index) * 0.2;
+      });
       controls.update();
       renderer.render(scene, camera);
       animationFrameId = requestAnimationFrame(animate);
@@ -142,16 +133,7 @@ export default function ThreeViewer({
 
     animate();
 
-    const onMouseMove = (event: MouseEvent) => {
-      const tiltX = (event.clientX / window.innerWidth - 0.5) * 0.08;
-      const tiltY = (event.clientY / window.innerHeight - 0.5) * 0.08;
-      floatingAccent.rotation.x = tiltY;
-      floatingAccent.rotation.z = tiltX;
-    };
-    window.addEventListener("mousemove", onMouseMove);
-
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
       controls.dispose();
@@ -189,46 +171,53 @@ export default function ThreeViewer({
     <div className="flex h-full flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-white/70">
         <div className="flex items-center gap-2">
-          <span className="rounded-full border border-white/20 px-3 py-1">Room: {selectedRoom}</span>
-          <span className="rounded-full border border-white/20 px-3 py-1">Style: {selectedStyle}</span>
+          <span className="rounded-full border border-white/20 px-3 py-1">
+            Room: {selectedRoom}
+          </span>
+          <span className="rounded-full border border-white/20 px-3 py-1">
+            Style: {selectedStyle}
+          </span>
         </div>
-
-        <div className="flex justify-end gap-3">
-          <button onClick={onToggleAutoRotate} className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 hover:border-white/40" type="button">🧭 {autoRotate ? "Auto on" : "Auto off"}</button>
-          <button onClick={handleFullscreen} className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 hover:border-white/40" type="button">⛶ {isFullscreen ? "Exit" : "Fullscreen"}</button>
-          <button onClick={handleScreenshot} className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 hover:border-white/40" type="button">📸 Screenshot</button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={onToggleAutoRotate}
+            className="rounded-full border border-white/20 px-3 py-1"
+          >
+            {autoRotate ? "Auto-rotation on" : "Auto-rotation off"}
+          </button>
+          <button
+            onClick={handleFullscreen}
+            className="rounded-full border border-white/20 px-3 py-1"
+          >
+            {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+          </button>
+          <button
+            onClick={handleScreenshot}
+            className="rounded-full border border-white/20 px-3 py-1"
+          >
+            Screenshot
+          </button>
         </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[220px_1fr]">
-        <aside className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm">
-          <p className="font-semibold">Detected furniture</p>
-          <ul className="mt-3 space-y-2 text-white/70">
-            <li>• Sofa</li>
-            <li>• Coffee table</li>
-            <li>• Cabinet</li>
-            <li>• Floor lamp</li>
-            <li>• Accent object</li>
-          </ul>
-        </aside>
-
-        <div className="relative">
-          <div ref={containerRef} className="relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-[#0b0f19]">
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-          </div>
-
-          {!isPremium ? (
-            <div className="absolute inset-0 flex items-center justify-center rounded-3xl bg-[#0b0f19]/55 backdrop-blur-[2px]">
-              <div className="rounded-2xl border border-white/20 bg-black/40 px-5 py-3 text-sm text-white/85">Premium only · upgrade to unlock interactive viewer</div>
-            </div>
-          ) : null}
+      <div
+        ref={containerRef}
+        className="relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-[#0b0f19]"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+        <div className="absolute bottom-4 right-4 rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+          Orbit · Zoom · Pan
         </div>
       </div>
 
       {snapshotUrl ? (
         <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/70">
           Screenshot saved locally. Preview ready below.
-          <img src={snapshotUrl} alt="DesignAI room snapshot" className="mt-3 rounded-2xl border border-white/10" />
+          <img
+            src={snapshotUrl}
+            alt="DesignAI room snapshot"
+            className="mt-3 rounded-2xl border border-white/10"
+          />
         </div>
       ) : null}
     </div>
