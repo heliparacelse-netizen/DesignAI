@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "Prodotto",
+    "studio": "Studio",
+    "process": "Processo",
+    "login": "Accedi",
+    "language": "Lingua"
+  },
+  "hero": {
+    "titleLine1": "Trasforma ogni",
+    "titleLine2": "stanza con l'IA",
+    "subtitle": "Carica una foto. La nostra IA ridisegna il tuo spazio all'istante.",
+    "primaryCta": "Inizia gratis",
+    "secondaryCta": "Guarda la demo"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "Intelligenza layout IA",
+      "description": "Composizioni di stanze raffinate con raccomandazioni intelligenti."
+    },
+    "styleBlending": {
+      "title": "Motore di fusione stili",
+      "description": "Combina stili moderni, minimali e di lusso adatti al tuo spazio."
+    },
+    "exports": {
+      "title": "Esportazioni pronte per i clienti",
+      "description": "Condividi concetti di stanza istantaneamente con output visivo di alta qualità."
+    }
+  },
+  "cta": {
+    "headline": "Pronto a ridisegnare il tuo spazio?",
+    "subtitle": "Unisciti a migliaia di designer che usano l'IA per lavorare più velocemente.",
+    "button": "Inizia gratis"
+  }
+}

@@ -1,12 +1,15 @@
 export const supportedLocales = [
   "fr",
   "en",
+  "es",
   "de",
+  "it",
   "pt",
-  "zh-CN",
-  "ar-SA",
-  "sv",
+  "nl",
   "ja",
+  "zh",
+  "ko",
+  "ar",
 ] as const;
 
 export type SupportedLocale = (typeof supportedLocales)[number];
@@ -17,12 +20,15 @@ export const defaultLocale: SupportedLocale = "fr";
 export const localeLabel: Record<SupportedLocale, string> = {
   fr: "Français",
   en: "English",
+  es: "Español",
   de: "Deutsch",
+  it: "Italiano",
   pt: "Português",
-  "zh-CN": "简体中文",
-  "ar-SA": "العربية (السعودية)",
-  sv: "Svenska",
+  nl: "Nederlands",
   ja: "日本語",
+  zh: "中文",
+  ko: "한국어",
+  ar: "العربية",
 };
 
 export type MessageCatalog = {
@@ -106,12 +112,15 @@ const en: MessageCatalog = {
 const catalogs: Record<SupportedLocale, MessageCatalog> = {
   fr,
   en,
+  es: en,
   de: en,
+  it: en,
   pt: en,
-  "zh-CN": en,
-  "ar-SA": en,
-  sv: en,
+  nl: en,
   ja: en,
+  zh: en,
+  ko: en,
+  ar: en,
 };
 
 export function getMessages(locale: SupportedLocale): MessageCatalog {
@@ -124,12 +133,15 @@ export function detectBrowserLocale(browserLocale?: string): SupportedLocale {
 
   if (normalized.startsWith("fr")) return "fr";
   if (normalized.startsWith("en")) return "en";
+  if (normalized.startsWith("es")) return "es";
   if (normalized.startsWith("de")) return "de";
+  if (normalized.startsWith("it")) return "it";
   if (normalized.startsWith("pt")) return "pt";
-  if (normalized.startsWith("zh")) return "zh-CN";
-  if (normalized.startsWith("ar")) return "ar-SA";
-  if (normalized.startsWith("sv")) return "sv";
+  if (normalized.startsWith("nl")) return "nl";
   if (normalized.startsWith("ja")) return "ja";
+  if (normalized.startsWith("zh")) return "zh";
+  if (normalized.startsWith("ko")) return "ko";
+  if (normalized.startsWith("ar")) return "ar";
 
   return defaultLocale;
 }

@@ -18,9 +18,15 @@ type I18nContextValue = {
   setLocale: (locale: SupportedLocale) => void;
 };
 
-const I18nContext = createContext<I18nContextValue | null>(null);
+const fallbackContextValue: I18nContextValue = {
+  locale: defaultLocale,
+  messages: getMessages(defaultLocale),
+  setLocale: () => {},
+};
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
+const I18nContext = createContext<I18nContextValue>(fallbackContextValue);
+
+export default function I18nProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [locale, setLocaleState] = useState<SupportedLocale>(defaultLocale);
   const [loading, setLoading] = useState(true);
@@ -36,6 +42,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(nextLocale);
     window.localStorage.setItem(storageKey, nextLocale);
     document.documentElement.lang = nextLocale;
+    document.documentElement.dir = nextLocale === "ar" ? "rtl" : "ltr";
 
     const t = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(t);
@@ -45,6 +52,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     setLocaleState(nextLocale);
     window.localStorage.setItem(storageKey, nextLocale);
     document.documentElement.lang = nextLocale;
+    document.documentElement.dir = nextLocale === "ar" ? "rtl" : "ltr";
   };
 
   const value = useMemo(
@@ -68,9 +76,5 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useI18n() {
-  const context = useContext(I18nContext);
-  if (!context) {
-    throw new Error("useI18n must be used within I18nProvider");
-  }
-  return context;
+  return useContext(I18nContext);
 }

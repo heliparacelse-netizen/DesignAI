@@ -1,3 +1,5 @@
+"use client";
+
 import RoutePage from "@/components/RoutePage";
 
 export default function ProcessPage() {

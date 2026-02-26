@@ -1,0 +1,35 @@
+{
+  "navbar": {
+    "product": "产品",
+    "studio": "工作室",
+    "process": "流程",
+    "login": "登录",
+    "language": "语言"
+  },
+  "hero": {
+    "titleLine1": "用AI改造",
+    "titleLine2": "任何房间",
+    "subtitle": "上传一张照片，我们的AI立即重新设计您的空间。",
+    "primaryCta": "免费开始",
+    "secondaryCta": "观看演示"
+  },
+  "features": {
+    "aiLayout": {
+      "title": "AI布局智能",
+      "description": "通过智能推荐实现精致的房间构图。"
+    },
+    "styleBlending": {
+      "title": "风格混合引擎",
+      "description": "将现代、简约和奢华风格融合，量身定制您的空间。"
+    },
+    "exports": {
+      "title": "客户就绪导出",
+      "description": "以高质量视觉输出即时分享房间概念。"
+    }
+  },
+  "cta": {
+    "headline": "准备好重新设计您的空间了吗？",
+    "subtitle": "加入数千名使用AI更快工作的设计师。",
+    "button": "免费开始"
+  }
+}
